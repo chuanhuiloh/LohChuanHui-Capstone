@@ -14,6 +14,8 @@ function StockForm() {
         fetch("https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=" +
             stockTicker +
             "&apikey=PP73Y1DWJLF5EM96")
+            .then((res) => res.json())
+            .then((data) => setStockQuote(data['Global Quote']));
     }, [stockTicker]);
 
     useEffect(() => {
@@ -27,21 +29,21 @@ function StockForm() {
                     <input 
                         type="text" 
                         placeholder="Stock Ticker"
-                        onChange={(event)=>{
+                        onBlur={(event)=>{
                             setStockTicker(event.target.value);
                         }}
                     />
                     <input 
                         type="number" 
                         placeholder="Quantity"
-                        onChange={(event)=>{
+                        onBlur={(event)=>{
                             setStockQty(event.target.value);
                         }}
                     />
                     <input 
                         type="number" 
                         placeholder="Purchase Price" 
-                        onChange={(event)=>{
+                        onBlur={(event)=>{
                             setStockPurchasePrice(event.target.value);
                         }}
                     />
