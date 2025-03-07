@@ -13,7 +13,7 @@ function StockForm() {
     const fetchStockData = useCallback(() => {
         fetch("https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=" +
             stockTicker +
-            "&apikey=PP73Y1DWJLF5EM96")
+            "&apikey=AFYOZAR7QZWXMFUR")
             .then((res) => res.json())
             .then((data) => setStockQuote(data['Global Quote']));
     }, [stockTicker]);
@@ -29,21 +29,21 @@ function StockForm() {
                     <input 
                         type="text" 
                         placeholder="Stock Ticker"
-                        onBlur={(event)=>{
+                        onChange={(event)=>{
                             setStockTicker(event.target.value);
                         }}
                     />
                     <input 
                         type="number" 
                         placeholder="Quantity"
-                        onBlur={(event)=>{
+                        onChange={(event)=>{
                             setStockQty(event.target.value);
                         }}
                     />
                     <input 
                         type="number" 
                         placeholder="Purchase Price" 
-                        onBlur={(event)=>{
+                        onChange={(event)=>{
                             setStockPurchasePrice(event.target.value);
                         }}
                     />
@@ -67,7 +67,7 @@ function StockForm() {
                                 profitLoss: ((parseFloat(stockQuote["05. price"])-parseFloat(stockPurchasePrice)) * stockQty)
                             }
                         ])}}
-                    
+
 
                     >Add Stock
                     </button>
